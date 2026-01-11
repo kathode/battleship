@@ -11,6 +11,8 @@ export class Ship {
     // hits origin
     if (xPosition === this.coordinates.x && yPosition === this.coordinates.y) {
       this.hitCount++;
+      this.isSinking();
+
       return true;
     }
 
@@ -22,6 +24,8 @@ export class Ship {
       xPosition <= this.coordinates.x + this.size - 1
     ) {
       this.hitCount++;
+      this.isSinking();
+
       return true;
     }
 
@@ -33,6 +37,8 @@ export class Ship {
       yPosition <= this.coordinates.y + this.size - 1
     ) {
       this.hitCount++;
+      this.isSinking();
+
       return true;
     }
 
