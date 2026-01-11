@@ -41,3 +41,30 @@ test("Check multiple ship formation", () => {
 
   expect(gameboard.receiveAttact(3, 2)).toBeFalsy();
 });
+
+test("Check all ship sunk", () => {
+  const gameboard = new Gameboard();
+
+  gameboard.shipFormation(0, 0, 2, "vertical");
+  gameboard.shipFormation(2, 1, 2);
+
+  gameboard.receiveAttact(0, 0);
+  gameboard.receiveAttact(0, 1);
+  gameboard.receiveAttact(2, 1);
+  gameboard.receiveAttact(3, 1);
+
+  expect(gameboard.isGameover()).toBeTruthy();
+});
+
+test("!Check all ship sunk", () => {
+  const gameboard = new Gameboard();
+
+  gameboard.shipFormation(0, 0, 2, "vertical");
+  gameboard.shipFormation(2, 1, 2);
+
+  gameboard.receiveAttact(0, 0);
+  gameboard.receiveAttact(0, 1);
+  gameboard.receiveAttact(2, 1);
+
+  expect(gameboard.isGameover()).toBeFalsy();
+});
